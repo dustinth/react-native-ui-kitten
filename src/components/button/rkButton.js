@@ -147,7 +147,7 @@ export class RkButton extends RkComponent {
       return displayText(this.props.children)
     }
     let babies = _.isArray(this.props.children) ? this.props.children : [this.props.children];
-    const elem React.Children.map(babies, (baby) => {
+    const elem = React.Children.map(babies, (baby) => {
       if (typeof baby === 'string') {
         return displayText(baby);
       } else {
