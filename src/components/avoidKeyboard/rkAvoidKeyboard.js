@@ -2,17 +2,24 @@ import React from 'react';
 import {
   Animated,
   Platform,
-  Keyboard
+  Keyboard,
+  ViewPropTypes,
 } from 'react-native';
-import {RkComponent} from '../rkComponent';
+import { RkComponent } from '../rkComponent';
 
 /**
  * `RkAvoidKeyboard` is a component for handling keyboard appearing on the screen.
- * This component is just a container for other react components. In order to avoid keyboard it just changes `top` value according to keyboard height.
+ * This component is just a container for other react components.
+ * In order to avoid keyboard it just changes `top` value according to keyboard height.
  * It doesn't have any customization. We also recommend not customize it.
- * @extends RkComponent
  *
- * @example Sample Usage:
+ * @deprecated since version 3.1.1. Will be deleted in version 3.2.0.
+ *
+ * @extends React.Component
+ *
+ * @example Important notes
+ *
+ * Deprecated since version 3.1.1. Will be deleted in version 3.2.0.
  *
  * ```
  * <RkAvoidKeyboard>
@@ -21,9 +28,12 @@ import {RkComponent} from '../rkComponent';
  * ```
  */
 export class RkAvoidKeyboard extends RkComponent {
+  static propTypes = {
+    ...ViewPropTypes,
+  };
   componentName = 'RkAvoidKeyboard';
   typeMapping = {
-    container: {}
+    container: {},
   };
 
   constructor(props) {
@@ -32,8 +42,8 @@ export class RkAvoidKeyboard extends RkComponent {
       top: new Animated.Value(0),
     };
 
-    this.onKeyboardWillShow = this._onKeyboardWillShow.bind(this);
-    this.onKeyboardWillHide = this._onKeyboardWillHide.bind(this);
+    this.onKeyboardWillShow = this.onKeyboardWillShow.bind(this);
+    this.onKeyboardWillHide = this.onKeyboardWillHide.bind(this);
   }
 
   componentWillMount() {
@@ -50,14 +60,14 @@ export class RkAvoidKeyboard extends RkComponent {
     }
   }
 
-  _onKeyboardWillShow(e) {
+  onKeyboardWillShow(e) {
     Animated.timing(this.state.top, {
       toValue: -(e.startCoordinates.height),
       duration: e.duration,
     }).start();
   }
 
-  _onKeyboardWillHide(e) {
+  onKeyboardWillHide(e) {
     Animated.timing(this.state.top, {
       toValue: 0,
       duration: e.duration,
@@ -65,17 +75,18 @@ export class RkAvoidKeyboard extends RkComponent {
   }
 
   render() {
-    let {
+    const {
       style,
       children,
       ...props
     } = this.props;
 
-    let {container} = this.defineStyles();
+    const { container } = this.defineStyles();
 
     return (
-      <Animated.View style={[container, {top: this.state.top}, style]}
-                     {...props}>
+      <Animated.View
+        style={[container, { top: this.state.top }, style]}
+        {...props}>
         {children}
       </Animated.View>
     );

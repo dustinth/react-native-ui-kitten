@@ -1,13 +1,16 @@
-import React from "react";
-import {View} from "react-native";
-import {RkComponent} from "../rkComponent";
+import React from 'react';
+import {
+  View,
+  ViewPropTypes,
+} from 'react-native';
+import PropTypes from 'prop-types';
+import { RkComponent } from '../rkComponent';
 
 /**
  * `RkCard` component used to render card view in your application.
  * It's usually being used with its props applied to standard react or custom components.
  *
- * @extends RkComponent
- *
+ * @extends React.Component
  *
  * @example Usage example:
  *
@@ -26,7 +29,8 @@ import {RkComponent} from "../rkComponent";
  * </RkCard>
  * ```
  *
- * @style There are 6 `RkCard` nested element props which can be applied to elements inside `RkCard`:
+ * @style There are 6 `RkCard` nested element props
+ * which can be applied to elements inside `RkCard`:
  * - `rkCardContainer` : Used for styling root card container
  * - `rkCardHeader` : Used for styling header of card
  * - `rkCardImg` : Used for styling image content in card
@@ -36,7 +40,8 @@ import {RkComponent} from "../rkComponent";
  *
  * @example Using rkType prop
  *
- * `RkCard` has `rkType` prop. This prop works similar to CSS-class in web. It's possible to set more than one type.
+ * `RkCard` has `rkType` prop. This prop works similar to CSS-class in web.
+ * It's possible to set more than one type.
  * There are already some predefined types. Here is example of how to use rkType
  *
  * ```
@@ -52,7 +57,8 @@ import {RkComponent} from "../rkComponent";
  *
  * @example Define new rkTypes
  *
- * It's easy and very common to create new types. Main point for all customization is `RkTheme` object.
+ * It's easy and very common to create new types.
+ * Main point for all customization is `RkTheme` object.
  * `rkType` used here to set style for each of 6 `rkCard` nested element props.
  * New rkTypes are defined using `setType` method of `RkTheme`:
  *
@@ -102,9 +108,18 @@ import {RkComponent} from "../rkComponent";
  * @property {style} style - Style for root container of `RkCard`
  */
 export class RkCard extends RkComponent {
-
   static attrName = 'rkCard';
-
+  static propTypes = {
+    style: ViewPropTypes.style,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node,
+    ]),
+  };
+  static defaultProps = {
+    style: null,
+    children: [],
+  };
   componentName = 'RkCard';
   typeMapping = {
     container: {},
@@ -112,56 +127,45 @@ export class RkCard extends RkComponent {
     content: {},
     footer: {},
     img: {},
-    imgOverlay: {}
+    imgOverlay: {},
   };
 
-  constructor(props) {
-    super(props);
+  mapPropAttributeToStyle(prop) {
+    const name = prop.substring(RkCard.attrName.length);
+    return name.charAt(0).toLowerCase() + name.slice(1);
   }
 
-  _process(elem, readyStyles) {
-    if (!elem) {
-      return null
+  cloneView(view, props, styles) {
+    const cloneProps = { ...props };
+    if (view.props && view.props.children) {
+      const subviewMapping = subview => this.renderChildView(subview, styles);
+      cloneProps.children = React.Children.map(view.props.children, subviewMapping);
     }
-    let isCardAttr = prop => prop.startsWith(RkCard.attrName);
+    return React.cloneElement(view, cloneProps);
+  }
 
-    let styles = [];
+  renderChildView(view, styles) {
+    return view ? this.renderView(view, styles) : null;
+  }
 
-    for (let prop in elem.props) {
-      if (isCardAttr(prop)) {
-        styles.push(readyStyles[this._convertAttrToStyle(prop)]);
-      }
+  renderView(view, styles) {
+    const viewStyles = Object.keys(view.props || {})
+      .filter(prop => prop.startsWith(RkCard.attrName))
+      .map(prop => styles[this.mapPropAttributeToStyle(prop)]);
+    if (view.props) {
+      viewStyles.push(view.props.style);
     }
-
-    if (elem.props) styles.push(elem.props.style);
-    return this._copyElement(elem, {style: styles}, readyStyles);
-  };
-
-  _copyElement(elem, props, readyStyles) {
-    if (typeof elem === 'string') return elem;
-    let propsToClone = ({
-      ...props
-    });
-    if (elem.props && elem.props.children) {
-      propsToClone.children = Array.isArray(elem.props.children) ?
-        React.Children.map(elem.props.children, (child) => this._process(child, readyStyles)) :
-        this._process(elem.props.children, readyStyles);
-    }
-    return React.cloneElement(elem, propsToClone);
-  };
-
-  _convertAttrToStyle(prop) {
-    let name = prop.substring(RkCard.attrName.length);
-    return name.charAt(0).toLowerCase() + name.slice(1);
-  };
+    return typeof view === 'string' ? view : this.cloneView(view, { style: viewStyles }, styles);
+  }
 
   render() {
-    let {container, ...definedStyles} = this.defineStyles();
-    let {style, ...viewProps} = this.props;
-    return this._process(
-      <View rkCardContainer style={[container, style]} {...viewProps}>
+    const { container, ...containerStyles } = this.defineStyles();
+    const { style, ...viewProps } = this.props;
+    return this.renderView(
+      <View rkCardContainer={true} style={[container, style]} {...viewProps}>
         {this.props.children}
-      </View>, definedStyles
+      </View>,
+      containerStyles,
     );
   }
 }
