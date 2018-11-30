@@ -3,6 +3,7 @@ import {
   TouchableOpacity,
   Image,
   ViewPropTypes,
+  View
 } from 'react-native';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -253,16 +254,24 @@ export class RkChoice extends RkComponent {
   }
 
   render() {
-    const { container, contentView } = this.renderContentView();
-    return (
-      <TouchableOpacity
-        style={[container, this.props.style]}
-        activeOpacity={this.props.disabled ? 1 : 0.2}
-        onPress={this.props.disabled ? () => {} : (e) => {
-          this.onPress(e);
-        }}>
-        {contentView}
-      </TouchableOpacity>
-    );
+      const { container, contentView } = this.renderContentView();
+      if (this.props.inTrigger) {
+          return (
+              <View style={[container, this.props.style]}>
+                  {contentView}
+              </View>
+          );
+      } else {
+          return (
+              <TouchableOpacity
+                  style={[container, this.props.style]}
+                  activeOpacity={this.props.disabled ? 1 : 0.2}
+                  onPress={this.props.disabled ? () => {} : (e) => {
+                      this.onPress(e);
+                  }}>
+                  {contentView}
+              </TouchableOpacity>
+          );
+      }
   }
 }
