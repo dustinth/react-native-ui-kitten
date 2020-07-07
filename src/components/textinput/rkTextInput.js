@@ -4,7 +4,6 @@ import {
   TextInput,
   TouchableOpacity,
   ViewPropTypes,
-  TextStylePropTypes
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { RkComponent } from '../rkComponent';
@@ -143,7 +142,7 @@ export class RkTextInput extends RkComponent {
       PropTypes.element,
     ]),
     style: ViewPropTypes.style,
-    inputStyle: TextStylePropTypes,
+    inputStyle: Text.propTypes.style,
   };
   static defaultProps = {
     editable: true,
