@@ -142,7 +142,7 @@ export class RkTextInput extends RkComponent {
       PropTypes.element,
     ]),
     style: ViewPropTypes.style,
-    inputStyle: Text.propTypes.style,
+    inputStyle: PropTypes.any,
   };
   static defaultProps = {
     editable: true,
