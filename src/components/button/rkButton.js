@@ -146,7 +146,7 @@ export class RkButton extends RkComponent {
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node,
     ]),
-    touchable: PropTypes.func,
+    touchable: PropTypes.any,
   };
   static defaultProps = {
     style: null,
