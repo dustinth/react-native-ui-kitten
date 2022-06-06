@@ -272,6 +272,10 @@ export class RkSwitch extends RkComponent {
       inputRange: [-switchOffsetValue, 0],
       outputRange: [1, 0.01],
     });
+    const returnScaleReverse = this.switchAnimation.interpolate({
+      inputRange: [ 0, switchOffsetValue],
+      outputRange: [0.01, 1],
+    });
     return (
       <View style={[componentStyles, style]}>
         <Animated.View
@@ -279,7 +283,7 @@ export class RkSwitch extends RkComponent {
           {...this.panResponder.panHandlers}>
           <Animated.View style={[
             styles.ellipse,
-            { transform: [{ scale: value ? returnScale : this.ellipseAnimation }] },
+            { transform: [{ scale: value ? returnScale : returnScaleReverse }] },
           ]}
           />
           <Animated.View style={[
