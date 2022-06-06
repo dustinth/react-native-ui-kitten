@@ -133,9 +133,8 @@ export class RkSwitch extends RkComponent {
     return (
       <View style={[componentStyles, style]}>
         <Switch
-          onTintColor={switchStyles.onTintColor || onTintColor}
+          trackColor={{true: switchStyles.onTintColor || onTintColor, false: switchStyles.tintColor || tintColor}}
           thumbTintColor={switchStyles.thumbTintColor || thumbTintColor}
-          tintColor={switchStyles.tintColor || tintColor}
           {...restProps}
         />
       </View>
