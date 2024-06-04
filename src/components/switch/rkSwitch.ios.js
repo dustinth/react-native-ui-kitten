@@ -89,16 +89,6 @@ export class RkSwitch extends RkComponent {
   typeMapping = {
     component: {},
   };
-  static propTypes = {
-    rkType: RkComponent.propTypes.rkType,
-    disabled: PropTypes.bool,
-    onTintColor: PropTypes.string,
-    thumbTintColor: PropTypes.string,
-    tintColor: PropTypes.string,
-    value: PropTypes.bool,
-    onValueChange: PropTypes.func,
-    style: ViewPropTypes.style,
-  };
   static defaultProps = {
     rkType: RkComponent.defaultProps.rkType,
     disabled: false,

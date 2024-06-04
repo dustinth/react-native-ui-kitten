@@ -9,15 +9,6 @@ import {
 import { RkGalleryImage } from './rkGalleryImage';
 
 export class RkGalleryViewer extends React.Component {
-  static propTypes = {
-    items: PropTypes.node.isRequired,
-    initialIndex: PropTypes.number,
-    onItemClick: PropTypes.func,
-    onItemChange: PropTypes.func,
-    onItemScaleChange: PropTypes.func,
-
-    itemMaxScale: RkGalleryImage.propTypes.maxScale,
-  };
   static defaultProps = {
     initialIndex: 0,
     onItemClick: (() => null),

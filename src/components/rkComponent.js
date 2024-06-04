@@ -12,9 +12,6 @@ import { RkTheme } from '../styles/themeManager';
  * @extends React.Component
  */
 export class RkComponent extends React.Component {
-  static propTypes = {
-    rkType: PropTypes.string,
-  };
   static defaultProps = {
     rkType: '',
   };

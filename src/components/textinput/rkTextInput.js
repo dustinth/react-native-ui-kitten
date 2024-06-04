@@ -135,15 +135,7 @@ import { RkComponent } from '../rkComponent';
  * @property {style} inputStyle - Style applied to text input
  */
 export class RkTextInput extends RkComponent {
-  static propTypes = {
-    editable: PropTypes.bool,
-    label: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element,
-    ]),
-    style: ViewPropTypes.style,
-    inputStyle: ViewPropTypes.style,
-  };
+
   static defaultProps = {
     editable: true,
     label: null,

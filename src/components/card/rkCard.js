@@ -109,13 +109,6 @@ import { RkComponent } from '../rkComponent';
  */
 export class RkCard extends RkComponent {
   static attrName = 'rkCard';
-  static propTypes = {
-    style: ViewPropTypes.style,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]),
-  };
   static defaultProps = {
     style: null,
     children: [],

@@ -113,17 +113,6 @@ import { RkComponent } from '../rkComponent';
  * @property {function} onChange - Called when state of RkChoice is changed.
  */
 export class RkChoiceGroup extends RkComponent {
-  static propTypes = {
-    selectedIndex: PropTypes.number,
-    radio: PropTypes.bool,
-    onChange: PropTypes.func,
-    disabled: PropTypes.bool,
-    style: ViewPropTypes.style,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]),
-  };
   static defaultProps = {
     selectedIndex: undefined,
     radio: false,

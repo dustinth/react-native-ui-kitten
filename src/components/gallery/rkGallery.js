@@ -183,20 +183,6 @@ import { RkButton } from '../button/rkButton';
  * @property {function} onGalleryItemScaleChange - Gallery (modal) item scale change callback.
  */
 export class RkGallery extends RkComponent {
-  static propTypes = {
-    rkType: RkComponent.propTypes.rkType,
-    items: RkGalleryGrid.propTypes.items.isRequired,
-    itemStyle: RkGalleryGrid.propTypes.itemStyle,
-    renderGalleryHeader: RkGalleryHeaderFooter.propTypes.onRenderComponent,
-    renderGalleryFooter: RkGalleryHeaderFooter.propTypes.onRenderComponent,
-    spanCount: RkGalleryGrid.propTypes.spanCount,
-    galleryItemMaxScale: RkGalleryViewer.propTypes.itemMaxScale,
-    onGridItemClick: RkGalleryGrid.propTypes.onItemClick,
-    onGalleryItemClick: RkGalleryViewer.propTypes.onItemClick,
-    onGalleryItemChange: RkGalleryViewer.propTypes.onItemChange,
-    onGalleryItemScaleChange: RkGalleryViewer.propTypes.onItemScaleChange,
-    style: ViewPropTypes.style,
-  };
   static defaultProps = {
     rkType: RkComponent.defaultProps.rkType,
     itemStyle: RkGalleryGrid.defaultProps.itemStyle,

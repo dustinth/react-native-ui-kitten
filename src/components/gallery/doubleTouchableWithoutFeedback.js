@@ -3,13 +3,6 @@ import PropTypes from 'prop-types';
 import { TouchableWithoutFeedback } from 'react-native';
 
 export class DoubleTouchableWithoutFeedback extends React.Component {
-  static propTypes = {
-    onSinglePress: PropTypes.func.isRequired,
-    onDoublePress: PropTypes.func.isRequired,
-    delay: PropTypes.number,
-
-    children: PropTypes.node.isRequired,
-  };
   static defaultProps = {
     delay: 300,
   };

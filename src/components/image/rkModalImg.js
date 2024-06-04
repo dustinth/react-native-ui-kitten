@@ -165,21 +165,6 @@ import { RkTheme } from '../../styles/themeManager';
  *
  */
 export class RkModalImg extends RkComponent {
-  static propTypes = {
-    index: PropTypes.number,
-    source: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]).isRequired,
-    style: ViewPropTypes.style,
-    imgContainerStyle: ViewPropTypes.style,
-    modalStyle: ViewPropTypes.style,
-    modalImgStyle: ViewPropTypes.style,
-    headerStyle: ViewPropTypes.style,
-    footerStyle: ViewPropTypes.style,
-    renderHeader: PropTypes.func,
-    renderFooter: PropTypes.func,
-  };
   static defaultProps = {
     index: 0,
     style: null,

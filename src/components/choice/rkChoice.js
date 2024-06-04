@@ -179,15 +179,6 @@ import { RkComponent } from '../rkComponent';
  * @property {style} contentStyle - Style for `inner` component
  */
 export class RkChoice extends RkComponent {
-  static propTypes = {
-    rkType: PropTypes.string,
-    style: ViewPropTypes.style,
-    contentStyle: ViewPropTypes.style,
-    selected: PropTypes.bool,
-    disabled: PropTypes.bool,
-    onChange: PropTypes.func,
-    renderContentFunction: PropTypes.func,
-  };
   static defaultProps = {
     rkType: '',
     style: null,

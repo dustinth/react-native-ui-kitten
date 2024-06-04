@@ -28,9 +28,6 @@ import { RkComponent } from '../rkComponent';
  * ```
  */
 export class RkAvoidKeyboard extends RkComponent {
-  static propTypes = {
-    ...ViewPropTypes,
-  };
   componentName = 'RkAvoidKeyboard';
   typeMapping = {
     container: {},

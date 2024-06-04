@@ -156,29 +156,6 @@ import { RkOptionsList } from './rkOptionsList';
  * @property {string} selectedOptionRkType - Types for RkText component with selected option
  */
 export class RkPicker extends RkComponent {
-  static propTypes = {
-    rkType: RkComponent.propTypes.rkType,
-    // eslint-disable-next-line react/forbid-prop-types
-    data: PropTypes.array.isRequired,
-    optionRkType: RkComponent.propTypes.rkType,
-    selectedOptionRkType: RkComponent.propTypes.rkType,
-    // eslint-disable-next-line react/forbid-prop-types
-    selectedOptions: PropTypes.array,
-    optionHeight: PropTypes.number,
-    optionNumberOnPicker: PropTypes.number,
-    confirmButtonText: PropTypes.string,
-    cancelButtonText: PropTypes.string,
-    confirmTextRkType: PropTypes.string,
-    cancelTextRkType: PropTypes.string,
-    confirmButtonRkType: PropTypes.string,
-    cancelButtonRkType: PropTypes.string,
-    titleTextRkType: PropTypes.string,
-    onConfirm: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-    style: ViewPropTypes.style,
-    title: PropTypes.string,
-    visible: PropTypes.bool,
-  };
   static defaultProps = {
     rkType: RkComponent.defaultProps.rkType,
     optionRkType: RkComponent.defaultProps.rkType,

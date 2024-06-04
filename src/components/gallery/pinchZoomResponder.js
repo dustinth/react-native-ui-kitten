@@ -7,14 +7,6 @@ import {
 } from 'react-native';
 
 export class PinchZoomResponder extends Component {
-  static propTypes = {
-    maxScale: PropTypes.number,
-    onScaleChange: PropTypes.func,
-    onOffsetChange: PropTypes.func,
-
-    style: PropTypes.node,
-    children: PropTypes.node.isRequired,
-  };
   static defaultProps = {
     maxScale: 2,
     onScaleChange: (() => null),

@@ -66,10 +66,6 @@ import { RkComponent } from '../rkComponent';
  */
 
 export class RkText extends RkComponent {
-  static propTypes = {
-    rkType: RkComponent.propTypes.rkType,
-    ...Text.propTypes,
-  };
   static defaultProps = {
     rkType: RkComponent.defaultProps.rkType,
   };

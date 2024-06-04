@@ -139,15 +139,6 @@ import { RkComponent } from '../rkComponent';
  *
  */
 export class RkButton extends RkComponent {
-  static propTypes = {
-    style: ViewPropTypes.style,
-    contentStyle: RkText.propTypes.style,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]),
-    touchable: PropTypes.func,
-  };
   static defaultProps = {
     style: null,
     contentStyle: null,

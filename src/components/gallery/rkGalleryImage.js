@@ -84,13 +84,6 @@ import { PinchZoomResponder } from './pinchZoomResponder';
  * @property {function} onOffsetChange - item offset change callback.
  */
 export class RkGalleryImage extends RkComponent {
-  static propTypes = {
-    source: PropTypes.node.isRequired,
-    maxScale: PinchZoomResponder.propTypes.maxScale,
-    onClick: PropTypes.func,
-    onScaleChange: PinchZoomResponder.propTypes.onScaleChange,
-    onOffsetChange: PinchZoomResponder.propTypes.onOffsetChange,
-  };
   static defaultProps = {
     maxScale: PinchZoomResponder.defaultProps.maxScale,
     onClick: (() => null),

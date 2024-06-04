@@ -3,9 +3,6 @@ import { Animated } from 'react-native';
 import PropTypes from 'prop-types';
 
 export class RkGalleryHeaderFooter extends React.Component {
-  static propTypes = {
-    onRenderComponent: PropTypes.func,
-  };
   static defaultProps = {
     onRenderComponent: (() => null),
   };

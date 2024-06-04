@@ -264,20 +264,6 @@ import { RkText } from '../text/rkText';
  * @property {function} onTabChanged - Called when active tab was changed
  */
 export class RkTabView extends RkComponent {
-  static propTypes = {
-    rkType: RkComponent.propTypes.rkType,
-    rkTypeSelected: RkComponent.propTypes.rkType,
-    index: PropTypes.number,
-    maxVisibleTabs: PropTypes.number,
-    tabsUnderContent: PropTypes.bool,
-    onTabChanged: PropTypes.func,
-    headerContainerStyle: ViewPropTypes.style,
-    style: ViewPropTypes.style,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]).isRequired,
-  };
   static defaultProps = {
     rkType: RkComponent.defaultProps.rkType,
     rkTypeSelected: RkComponent.defaultProps.rkType,
